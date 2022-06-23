@@ -18,6 +18,7 @@ import java.net.Socket;
  * @author Usuario
  */
 public class Mesa1 {
+     
     public static void main(String args[]){
 
     int puerto_mesa1 = 4446;
@@ -54,11 +55,10 @@ public class Mesa1 {
     }
 
 }
+
 }
 
-
-
-class ServerThread extends Thread{  
+class  ServerThread extends Thread{  
 
     String mensaje_recibido=null;
     String mensaje_respuesta="";
@@ -66,9 +66,8 @@ class ServerThread extends Thread{
     PrintWriter os=null;
     Socket s=null;
     
-    
-    String ingrediente = "Tabaco";  
-    
+    String ingrediente = "";
+   
         
     
     public ServerThread(Socket s){
@@ -98,6 +97,7 @@ class ServerThread extends Thread{
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
                 if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
+                    ingrediente = "";
                 }else{
                     
                     mensaje_respuesta = "Sigue Buscando";
@@ -121,7 +121,7 @@ class ServerThread extends Thread{
 
     finally{    
     try{
-        System.out.println("Connection Closing..");
+        
         if (is!=null){
             is.close(); 
            // System.out.println(" Socket Input Stream Closed");

@@ -66,7 +66,7 @@ class ServerThread extends Thread{
     Socket s=null;
     
     
-    String ingrediente = "Fosforos";  
+    String ingrediente = "";  
     
         
     
@@ -97,6 +97,7 @@ class ServerThread extends Thread{
                 System.out.println("El fumador busca: /"+mensaje_recibido.substring(9)+"/ y la mesa tiene "+ingrediente);
                  if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
+                    ingrediente = "";
                 }else{
                     mensaje_respuesta = "Sigue Buscando";
                 }
@@ -119,7 +120,7 @@ class ServerThread extends Thread{
 
     finally{    
     try{
-        System.out.println("Connection Closing..");
+       
         if (is!=null){
             is.close(); 
            // System.out.println(" Socket Input Stream Closed");
