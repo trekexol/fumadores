@@ -18,6 +18,7 @@ import java.net.Socket;
  * @author Usuario
  */
 public class Mesa1 {
+     
     public static void main(String args[]){
 
     int puerto_mesa1 = 4446;
@@ -54,25 +55,26 @@ public class Mesa1 {
     }
 
 }
+
 }
 
-
-
-class ServerThread extends Thread{  
+class  ServerThread extends Thread{  
 
     String mensaje_recibido=null;
     String mensaje_respuesta="";
     BufferedReader  is = null;
     PrintWriter os=null;
     Socket s=null;
-
-    public String ingrediente ;
-
+    
+    String ingrediente = "";
+   
+        
+    
     public ServerThread(Socket s){
         this.s=s;
     }
 
-    public synchronized void run() {
+    public void run() {
     try{
         is= new BufferedReader(new InputStreamReader(s.getInputStream()));
         os=new PrintWriter(s.getOutputStream());
@@ -84,7 +86,8 @@ class ServerThread extends Thread{
     try {
         mensaje_recibido=is.readLine();
         while(mensaje_recibido.compareTo("QUIT")!=0){
-
+            
+            
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
@@ -94,6 +97,7 @@ class ServerThread extends Thread{
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
                 if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
+                    ingrediente = "";
                 }else{
                     
                     mensaje_respuesta = "Sigue Buscando";
@@ -117,7 +121,7 @@ class ServerThread extends Thread{
 
     finally{    
     try{
-        System.out.println("Connection Closing..");
+        
         if (is!=null){
             is.close(); 
            // System.out.println(" Socket Input Stream Closed");
