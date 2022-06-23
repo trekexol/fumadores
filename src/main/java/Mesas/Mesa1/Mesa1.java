@@ -65,17 +65,14 @@ class ServerThread extends Thread{
     BufferedReader  is = null;
     PrintWriter os=null;
     Socket s=null;
-    
-    
-    String ingrediente = "Tabaco";  
-    
-        
-    
+
+    public String ingrediente ;
+
     public ServerThread(Socket s){
         this.s=s;
     }
 
-    public void run() {
+    public synchronized void run() {
     try{
         is= new BufferedReader(new InputStreamReader(s.getInputStream()));
         os=new PrintWriter(s.getOutputStream());
@@ -87,8 +84,7 @@ class ServerThread extends Thread{
     try {
         mensaje_recibido=is.readLine();
         while(mensaje_recibido.compareTo("QUIT")!=0){
-            
-            
+
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);

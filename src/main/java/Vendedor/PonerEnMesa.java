@@ -20,7 +20,7 @@ public class PonerEnMesa {
     
     int puerto_mesa1 = 4446;
      
-    public void enviar() throws IOException{
+    public synchronized void enviar() throws IOException{
          InetAddress address=InetAddress.getLocalHost();
     Socket s1=null;
     BufferedReader br=null;

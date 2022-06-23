@@ -71,7 +71,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
 public static String buscarEnMesas(int mesa,String le_falta)throws IOException, InterruptedException{
    
-    InetAddress address=InetAddress.getLocalHost();
+    String address="192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
     Socket s1=null;
     String mensaje= "Fumador1";
     BufferedReader br=null;
@@ -87,6 +87,7 @@ public static String buscarEnMesas(int mesa,String le_falta)throws IOException, 
         br= new BufferedReader(new InputStreamReader(System.in));
         is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
         os= new PrintWriter(s1.getOutputStream());
+        
     }
     catch (IOException e){
         e.printStackTrace();
@@ -113,7 +114,6 @@ public static String buscarEnMesas(int mesa,String le_falta)throws IOException, 
     System.out.println("Socket read Error");
     }
     finally{
-
         is.close();os.close();br.close();s1.close();
         return response;
     }
