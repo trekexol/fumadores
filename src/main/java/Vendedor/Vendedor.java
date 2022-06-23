@@ -100,11 +100,11 @@ class ServerThread extends Thread{
     } catch (IOException e) {
 
         mensaje_recibido=this.getName(); //reused String line for getting thread name
-        System.out.println("IO Error/ Client "+mensaje_recibido+" terminated abruptly");
+       
     }
     catch(NullPointerException e){
         mensaje_recibido=this.getName(); //reused String line for getting thread name
-        System.out.println("Client "+mensaje_recibido+" Closed");
+        
     }
 
     finally{    
@@ -112,21 +112,21 @@ class ServerThread extends Thread{
         System.out.println("Connection Closing..");
         if (is!=null){
             is.close(); 
-            System.out.println(" Socket Input Stream Closed");
+           
         }
 
         if(os!=null){
             os.close();
-            System.out.println("Socket Out Closed");
+           
         }
         if (s!=null){
         s.close();
-        System.out.println("Socket Closed");
+        
         }
 
         }
     catch(IOException ie){
-        System.out.println("Socket Close Error");
+       
     }
     }//end finally
     }

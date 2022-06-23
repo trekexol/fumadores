@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Mesas.Mesa1;
+package Mesa2;
 
 
 import java.io.BufferedReader;
@@ -12,24 +12,27 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Usuario
  */
-public class Mesa1 {
+public class Mesa2 {
     public static void main(String args[]){
 
-    int puerto_mesa1 = 4446;
+    int puerto_mesa2 = 4447;
    
     Socket s=null;
     ServerSocket ss2=null;
-    System.out.println("Mesa 1 escuchando ...");
+    System.out.println("Mesa 2 escuchando ...");
     
     
     
     try{
-        ss2 = new ServerSocket(puerto_mesa1); // can also use static final PORT_NUM , when defined
+        ss2 = new ServerSocket(puerto_mesa2); // can also use static final PORT_NUM , when defined
 
     }
     catch(IOException e){
@@ -67,7 +70,7 @@ class ServerThread extends Thread{
     Socket s=null;
     
     
-    String ingrediente = "Tabaco";  
+    String ingrediente = "Papel";  
     
         
     
@@ -96,11 +99,11 @@ class ServerThread extends Thread{
             }
             if(mensaje_recibido.substring(0, 7).equals("Fumador")){
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
-                if(mensaje_recibido.substring(9).contains(ingrediente)){
+                 if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
                 }else{
-                    
                     mensaje_respuesta = "Sigue Buscando";
+                    
                 }
                 
             }
@@ -117,8 +120,7 @@ class ServerThread extends Thread{
     catch(NullPointerException e){
         mensaje_recibido=this.getName(); //reused String line for getting thread name
       //  System.out.println("Client "+mensaje_recibido+" Closed");
-    }
-
+    }  
     finally{    
     try{
         System.out.println("Connection Closing..");

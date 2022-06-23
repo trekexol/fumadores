@@ -27,7 +27,7 @@ public class PonerEnMesa {
     BufferedReader is=null;
     PrintWriter os=null;
       String line = "";
-    String[] ingredientes = new String[]{"Tabaco","Papel","Fosforos"};  
+    String[] ingredientes = new String[]{"Tabaco-Papel","Tabaco-Fosforos","Papel-Fosforos"};  
     
     Random azar = new Random();
 
