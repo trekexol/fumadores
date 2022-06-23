@@ -13,19 +13,34 @@ import java.net.Socket;
  *
  * @author Usuario
  */
-public class Mesa1 {
-    public static void main(String args[]){
+public class Mesa1 implements Runnable{
 
-    int puerto_mesa1 = 4446;
+    private int soc ;
+
+    public Mesa1(int soc1)
+    {
+        this.setsoc(soc1);
+       
+    }
+
+    private void setsoc(int soc1) {
+        this.soc = soc1;
+    }
+    
+
+
+    public void run(){
+
+    
    
     Socket s=null;
     ServerSocket ss2=null;
-    System.out.println("Mesa 1 escuchando ...");
+    System.out.println("Mesa "+soc+" escuchando ...");
     
     
     
     try{
-        ss2 = new ServerSocket(puerto_mesa1); // can also use static final PORT_NUM , when defined
+        ss2 = new ServerSocket(soc); // can also use static final PORT_NUM , when defined
 
     }
     catch(IOException e){
@@ -50,6 +65,8 @@ public class Mesa1 {
     }
 
 }
+
+    
 }
 
 
@@ -68,7 +85,7 @@ class ServerThread extends Thread{
         this.s=s;
     }
 
-    public  void run() {
+    public void run() {
     try{
         is= new BufferedReader(new InputStreamReader(s.getInputStream()));
         os=new PrintWriter(s.getOutputStream());
