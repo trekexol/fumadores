@@ -71,7 +71,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
 public static String buscarEnMesas(int mesa,String le_falta)throws IOException, InterruptedException{
    
-    String address="192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+    String address="localhost"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
     Socket s1=null;
     String mensaje= "Fumador1";
     BufferedReader br=null;
