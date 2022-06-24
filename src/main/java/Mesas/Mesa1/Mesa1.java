@@ -85,7 +85,7 @@ class ServerThread extends Thread{
     public ServerThread(Socket s){
         this.s=s;
     }
-    
+    @Override
     public void run() {
     try{
         is= new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -97,9 +97,9 @@ class ServerThread extends Thread{
 
     try {
             while (true) {
-                mensaje_recibido = is.readLine();
-                System.out.println("Mesa 1 recibio : "+mensaje_recibido);
                 mensaje_recibido=is.readLine();
+                System.out.println("Mesa 1 recibio : "+mensaje_recibido);
+                //mensaje_recibido=is.readLine();
         while(mensaje_recibido!=("QUIT")){
 
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){

@@ -19,12 +19,7 @@ public class MesasRun {
         //create a virtual thread running Mesa[2]
         Thread m3 = new Thread(Mesa[2]);
         m1.start();
-        try {
-            m1.join();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+
         m2.start();
         m3.start();
 
