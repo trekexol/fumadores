@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -21,7 +22,7 @@ public class PonerEnMesa {
     int[] puerto_mesa = {4446,4447,4448};
     
      
-    public synchronized void enviar() throws IOException{
+    public synchronized void enviar() throws IOException, InterruptedException{
         int numero_aleatorio = -1;
         int numero_anterior = -1;
          Random azar = new Random();
@@ -37,7 +38,7 @@ public class PonerEnMesa {
         
         
     }    
-    public static void enviarIngrediente(int puerto) throws IOException{
+    public static void enviarIngrediente(int puerto) throws IOException, InterruptedException{
             
          InetAddress address=InetAddress.getLocalHost();
     Socket s1=null;
@@ -70,8 +71,8 @@ public class PonerEnMesa {
         
         //System.out.println("Server Response : "+response);
         //line=br.readLine();
-
-       
+        is.close();os.close();br.close();s1.close();
+      
     }
     catch(IOException e){
         e.printStackTrace();

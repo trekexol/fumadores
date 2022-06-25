@@ -12,15 +12,18 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Usuario
  */
 public class Vendedor {
-    public static void main(String args[]) throws IOException{
+    public static void main(String args[]) throws IOException, InterruptedException{
 
-    int puerto_vendedor = 4449;
+    int puerto_vendedor = 4450;
    
     
     PonerEnMesa envi = new PonerEnMesa();
@@ -31,9 +34,11 @@ public class Vendedor {
     ServerSocket ss2=null;
     System.out.println("Vendedor escuchando ...");
     
+     EjecutarVendedor ejecutar_vendedor = new EjecutarVendedor();
     
     
     try{
+         
         ss2 = new ServerSocket(puerto_vendedor); // can also use static final PORT_NUM , when defined
 
     }
@@ -45,10 +50,12 @@ public class Vendedor {
 
     while(true){
         try{
+           
             s= ss2.accept();
-            System.out.println("Escuchando nueva Peticion");
-            ServerThread st=new ServerThread(s);
-            st.start();
+            System.out.println("Escuchando nueva Peticiones");
+             ejecutar_vendedor.ejecutar(s);
+          /*  ServerThread st=new ServerThread(s);
+            st.start();*/
 
         }
 
@@ -62,7 +69,7 @@ public class Vendedor {
 }
 }
 
-
+/*
 
 class ServerThread extends Thread{  
 
@@ -71,7 +78,7 @@ class ServerThread extends Thread{
     PrintWriter os=null;
     Socket s=null;
     
-  
+    
     
     public ServerThread(Socket s){
         this.s=s;
@@ -91,38 +98,31 @@ class ServerThread extends Thread{
         while(mensaje_recibido.compareTo("QUIT")!=0){
             
             
-            /*ENVIAR RESPUESTA -----------------------------------------------*/
+            /*ENVIAR RESPUESTA -----------------------------------------------
             PonerEnMesa envi = new PonerEnMesa();
             envi.enviar();
-            /*---------------------------------------------------------*/
+            /*---------------------------------------------------------
             mensaje_recibido=is.readLine();
         }   
     } catch (IOException e) {
 
-        mensaje_recibido=this.getName(); //reused String line for getting thread name
-       
+      
     }
     catch(NullPointerException e){
-        mensaje_recibido=this.getName(); //reused String line for getting thread name
-        
+      
+    }catch (InterruptedException ex) {
+           
     }
 
     finally{    
     try{
-        System.out.println("Connection Closing..");
-        if (is!=null){
+       
             is.close(); 
-           
-        }
-
-        if(os!=null){
+       
             os.close();
-           
-        }
-        if (s!=null){
+      
         s.close();
         
-        }
 
         }
     catch(IOException ie){
@@ -130,4 +130,4 @@ class ServerThread extends Thread{
     }
     }//end finally
     }
-}
+}*/
