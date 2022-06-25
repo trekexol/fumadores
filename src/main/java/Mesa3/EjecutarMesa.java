@@ -1,91 +1,46 @@
-package Mesas.Mesa1;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Mesa3;
 
-
+import Mesa1.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- *
- * @author Usuario
- */
-public class Mesa1 implements Runnable{
+public class EjecutarMesa {
+    
+    public String ingrediente = "";
 
-    private int soc ;
-
-    public Mesa1(int soc1)
-    {
-        this.setsoc(soc1);
-       
+    public EjecutarMesa() {
     }
 
-    private void setsoc(int soc1) {
-        this.soc = soc1;
+    public String getIngrediente() {
+        return ingrediente;
+    }
+
+    public void setIngrediente(String ingrediente) {
+        this.ingrediente = ingrediente;
     }
     
-
-
-    public void run(){
-
-    
-   
-    Socket s=null;
-    ServerSocket ss2=null;
-    System.out.println("Mesa "+soc+" escuchando ...");
     
     
     
-    try{
-        ss2 = new ServerSocket(soc); // can also use static final PORT_NUM , when defined
-
-    }
-    catch(IOException e){
-    e.printStackTrace();
-    System.out.println("Server error");
-
-    }
-
-    while(true){
-        try{
-            s= ss2.accept();
-            ServerThread st=new ServerThread(s);
-            st.start();
-
-        }
-
-    catch(Exception e){
-        e.printStackTrace();
-        System.out.println("Connection Error");
-
-    }
-    }
-
-}
-
-    
-}
-
-
-
-class ServerThread extends Thread{  
+public  void ejecutar(Socket s) {
 
     String mensaje_recibido=null;
     String mensaje_respuesta="";
     BufferedReader  is = null;
     PrintWriter os=null;
-    Socket s=null;
-
-    public String ingrediente ;
-
-    public ServerThread(Socket s){
-        this.s=s;
-    }
-
-    public void run() {
+    //Socket s=null;
+    
+    
+    //String ingrediente = "";  
+    
+   
     try{
         is= new BufferedReader(new InputStreamReader(s.getInputStream()));
         os=new PrintWriter(s.getOutputStream());
@@ -95,13 +50,10 @@ class ServerThread extends Thread{
     }
 
     try {
-        synchronized (this) {
-            while (true) {
-                mensaje_recibido = is.readLine();
-                System.out.println("Mesa 1 recibio : "+mensaje_recibido);
         mensaje_recibido=is.readLine();
         while(mensaje_recibido.compareTo("QUIT")!=0){
-
+            
+            
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
@@ -109,11 +61,12 @@ class ServerThread extends Thread{
             }
             if(mensaje_recibido.substring(0, 7).equals("Fumador")){
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
-                if(mensaje_recibido.substring(9).contains(ingrediente)){
+                 if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
+                    ingrediente = "";
                 }else{
-                    
                     mensaje_respuesta = "Sigue Buscando";
+                    
                 }
                 
             }
@@ -122,21 +75,18 @@ class ServerThread extends Thread{
             os.flush();
             mensaje_recibido=is.readLine();
         }   
-    }
-        }
     } catch (IOException e) {
 
-        mensaje_recibido=this.getName(); //reused String line for getting thread name
+       // mensaje_recibido=this.getName(); //reused String line for getting thread name
       //  System.out.println("IO Error/ Client "+mensaje_recibido+" terminated abruptly");
     }
     catch(NullPointerException e){
-        mensaje_recibido=this.getName(); //reused String line for getting thread name
+       // mensaje_recibido=this.getName(); //reused String line for getting thread name
       //  System.out.println("Client "+mensaje_recibido+" Closed");
-    }
-
+    }  
     finally{    
     try{
-        System.out.println("Connection Closing..");
+       
         if (is!=null){
             is.close(); 
            // System.out.println(" Socket Input Stream Closed");
@@ -156,5 +106,10 @@ class ServerThread extends Thread{
        // System.out.println("Socket Close Error");
     }
     }//end finally
-    }
+  }
+
+    
+    
+    
+    
 }

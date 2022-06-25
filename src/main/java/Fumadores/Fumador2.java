@@ -21,15 +21,16 @@ public class Fumador2 {
      
 public static void main(String args[]) throws IOException, InterruptedException{
 
-    int puerto_vendedor = 4449;
+    int puerto_vendedor = 4450;
     int[] puerto_mesa = {4446,4447,4448};
     
     int contador_intentos = 0;
-    String componente_infinito = "Tabaco";
     
-    String le_falta = "Papel-Fosforos";
+    String le_falta = "Tabaco-Fosforos";
     
     String respuesta_mesa = "";
+    
+    int contador_respuestas_vacias = 0;
     
     while(true){
         System.out.println("busca en mesa "+(contador_intentos+1));
@@ -40,7 +41,9 @@ public static void main(String args[]) throws IOException, InterruptedException{
         if(respuesta_mesa.equals("Papel")){
               if(le_falta.equals("Papel")){
                 System.out.println("Completo todos los Ingredientes, empieza a fumar");
+                //ya fumo y se reinicia
                 le_falta = "Papel-Fosforos";
+                contador_respuestas_vacias = 0;
             }else{
                  le_falta = "Fosforos";
             }
@@ -53,6 +56,16 @@ public static void main(String args[]) throws IOException, InterruptedException{
             }else{
                  le_falta = "Papel";
             }
+        }
+        
+        if(respuesta_mesa.equals("") || respuesta_mesa.equals("Sigue Buscando")){
+            contador_respuestas_vacias ++;
+            if(contador_respuestas_vacias == 2){
+                PedirAlVendedor(puerto_vendedor);
+                 System.out.println("Fumador2: Ya le pedi al vendedor");
+                 contador_respuestas_vacias = 0;
+            }
+           
         }
         
         contador_intentos += 1;
@@ -70,22 +83,19 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
 public static String buscarEnMesas(int mesa,String le_falta)throws IOException, InterruptedException{
    
-    InetAddress address=InetAddress.getLocalHost();
+    String address="127.0.0.1";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
     Socket s1=null;
-    String mensaje= "Fumador1";
+    String mensaje= "Fumador2";
     BufferedReader br=null;
     BufferedReader is=null;
     PrintWriter os=null;
-    
-    String componente_infinito = "Tabaco";
-    
-   
     
     try {
         s1=new Socket(address, mesa); // You can use static final constant PORT_NUM
         br= new BufferedReader(new InputStreamReader(System.in));
         is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
         os= new PrintWriter(s1.getOutputStream());
+        
     }
     catch (IOException e){
         e.printStackTrace();
@@ -103,8 +113,6 @@ public static String buscarEnMesas(int mesa,String le_falta)throws IOException, 
         System.out.println("La mesa Responde : "+response);
         
       
-        //mensaje=br.readLine();
-
 
     }
     catch(IOException e){
@@ -112,11 +120,47 @@ public static String buscarEnMesas(int mesa,String le_falta)throws IOException, 
     System.out.println("Socket read Error");
     }
     finally{
-
         is.close();os.close();br.close();s1.close();
         return response;
     }
 }
+
+
+
+public static void PedirAlVendedor(int vendedor)throws IOException, InterruptedException{
+   
+    String address="127.0.0.1";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+    Socket s1=null;
+    String mensaje= "Fumador2";
+    BufferedReader br=null;
+    BufferedReader is=null;
+    PrintWriter os=null;
+    
+    
+    try {
+        s1=new Socket(address, vendedor); // You can use static final constant PORT_NUM
+        br= new BufferedReader(new InputStreamReader(System.in));
+        is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
+        os= new PrintWriter(s1.getOutputStream());
+        
+    }
+    catch (IOException e){
+        e.printStackTrace();
+        System.err.print("IO Exception");
+    }
+
+   
+    String response=null;
+    os.println(mensaje); 
+    os.flush();
+    
+    is.close();
+    os.close();
+    br.close();
+    s1.close();
+}
+
+
 
 
 
