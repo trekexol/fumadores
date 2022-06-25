@@ -5,6 +5,8 @@
 package Mesa1;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -56,10 +58,12 @@ public  void ejecutar(Socket s) {
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
+                log("vendedor envio ingrediente: "+ingrediente+" a mesa 1");
                 mensaje_respuesta = "";
             }
             if(mensaje_recibido.substring(0, 7).equals("Fumador")){
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
+                log("fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
                  if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
                     ingrediente = "";
@@ -107,8 +111,15 @@ public  void ejecutar(Socket s) {
     }//end finally
   }
 
-    
-    
-    
-    
+  public void  log(String mensaje){
+    try {
+        BufferedWriter myWriter =  new BufferedWriter (new FileWriter("logMesa1.txt",true));
+        java.util.Date date = new java.util.Date();
+        myWriter.append(date +" "+ mensaje + "\n");
+        myWriter.close();
+}catch (IOException e) {
+    System.out.println("An error occurred.");
+    e.printStackTrace();
+}
+}
 }

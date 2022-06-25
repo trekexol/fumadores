@@ -6,6 +6,8 @@ package Mesa2;
 
 import Mesa1.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -57,24 +59,23 @@ public  void ejecutar(Socket s) {
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
+                log("el vendedor envio ingrediente: "+ingrediente+" a mesa 2");
                 mensaje_respuesta = "";
             }
             if(mensaje_recibido.substring(0, 7).equals("Fumador")){
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
+                log("el fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
                  if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
                     ingrediente = "";
                 }else{
                     mensaje_respuesta = "Sigue Buscando";
-                    
                 }
-                
             }
-            
             os.println(mensaje_respuesta);
             os.flush();
             mensaje_recibido=is.readLine();
-        }   
+        }
     } catch (IOException e) {
 
        // mensaje_recibido=this.getName(); //reused String line for getting thread name
@@ -83,12 +84,12 @@ public  void ejecutar(Socket s) {
     catch(NullPointerException e){
        // mensaje_recibido=this.getName(); //reused String line for getting thread name
       //  System.out.println("Client "+mensaje_recibido+" Closed");
-    }  
-    finally{    
+    }
+    finally{
     try{
-       
+
         if (is!=null){
-            is.close(); 
+            is.close();
            // System.out.println(" Socket Input Stream Closed");
         }
 
@@ -108,8 +109,15 @@ public  void ejecutar(Socket s) {
     }//end finally
   }
 
-    
-    
-    
-    
+  public void  log(String mensaje){
+    try {
+        BufferedWriter myWriter =  new BufferedWriter (new FileWriter("logMesa2.txt",true));
+        java.util.Date date = new java.util.Date();
+        myWriter.append(date +" "+ mensaje + "\n");
+        myWriter.close();
+}catch (IOException e) {
+    System.out.println("An error occurred.");
+    e.printStackTrace();
+}
+}
 }

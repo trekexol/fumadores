@@ -5,6 +5,8 @@
 package Vendedor;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -34,6 +36,7 @@ public class PonerEnMesa {
             numero_anterior =  numero_aleatorio;
             enviarIngrediente(puerto_mesa[numero_aleatorio]);
             System.out.println("Ingrediente Entregado mesa "+(numero_aleatorio+1));
+            log("ingrediente entregado mesa "+(numero_aleatorio+1));
         }
         
         
@@ -85,4 +88,16 @@ public class PonerEnMesa {
 
     }
     }
+
+    public void  log(String mensaje){
+        try {
+            BufferedWriter myWriter =  new BufferedWriter (new FileWriter("logVendedor.txt",true));
+            java.util.Date date = new java.util.Date();
+            myWriter.append(date +" "+ mensaje + "\n");
+            myWriter.close();
+    }catch (IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
+    }
+    }    
 }
