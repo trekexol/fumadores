@@ -52,17 +52,17 @@ public class Conexion {
     public static synchronized String buscarEnMesa2(int fumador,String le_falta)throws IOException, InterruptedException{
 
         String address="localhost";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
-        Socket s1=null;
+        Socket s2=null;
         String mensaje= "Fumador "+fumador;
         BufferedReader br=null;
         BufferedReader is=null;
         PrintWriter os=null;
 
         try {
-            s1=new Socket(address, 4447); // You can use static final constant PORT_NUM
+            s2=new Socket(address, 4447); // You can use static final constant PORT_NUM
             br= new BufferedReader(new InputStreamReader(System.in));
-            is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
-            os= new PrintWriter(s1.getOutputStream());
+            is=new BufferedReader(new InputStreamReader(s2.getInputStream()));
+            os= new PrintWriter(s2.getOutputStream());
 
         }
         catch (IOException e){
@@ -83,7 +83,7 @@ public class Conexion {
         System.out.println("Socket read Error");
         }
         finally{
-            is.close();os.close();br.close();s1.close();
+            is.close();os.close();br.close();s2.close();
             return response;
         }
     }
@@ -91,17 +91,17 @@ public class Conexion {
     public static synchronized String buscarEnMesa3(int fumador,String le_falta)throws IOException, InterruptedException{
 
         String address="localhost";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
-        Socket s1=null;
+        Socket s3=null;
         String mensaje= "Fumador "+fumador;
         BufferedReader br=null;
         BufferedReader is=null;
         PrintWriter os=null;
 
         try {
-            s1=new Socket(address, 4448); // You can use static final constant PORT_NUM
+            s3=new Socket(address, 4448); // You can use static final constant PORT_NUM
             br= new BufferedReader(new InputStreamReader(System.in));
-            is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
-            os= new PrintWriter(s1.getOutputStream());
+            is=new BufferedReader(new InputStreamReader(s3.getInputStream()));
+            os= new PrintWriter(s3.getOutputStream());
 
         }
         catch (IOException e){
@@ -122,7 +122,7 @@ public class Conexion {
         System.out.println("Socket read Error");
         }
         finally{
-            is.close();os.close();br.close();s1.close();
+            is.close();os.close();br.close();s3.close();
             return response;
         }
     }
