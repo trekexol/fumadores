@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Mesa2;
 
 import Mesa1.*;
@@ -14,7 +11,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class EjecutarMesa {
-    
+
     public String ingrediente = "";
 
     public EjecutarMesa() {
@@ -27,22 +24,16 @@ public class EjecutarMesa {
     public void setIngrediente(String ingrediente) {
         this.ingrediente = ingrediente;
     }
-    
-    
-    
-    
-public  void ejecutar(Socket s) {
+
+public synchronized void ejecutar(Socket s) {
 
     String mensaje_recibido=null;
     String mensaje_respuesta="";
     BufferedReader  is = null;
     PrintWriter os=null;
     //Socket s=null;
-    
-    
-    //String ingrediente = "";  
-    
-   
+    //String ingrediente = "";
+
     try{
         is= new BufferedReader(new InputStreamReader(s.getInputStream()));
         os=new PrintWriter(s.getOutputStream());
@@ -54,8 +45,7 @@ public  void ejecutar(Socket s) {
     try {
         mensaje_recibido=is.readLine();
         while(mensaje_recibido.compareTo("QUIT")!=0){
-            
-            
+
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
@@ -71,6 +61,7 @@ public  void ejecutar(Socket s) {
                 }else{
                     mensaje_respuesta = "Sigue Buscando";
                 }
+                notify();
             }
             os.println(mensaje_respuesta);
             os.flush();
