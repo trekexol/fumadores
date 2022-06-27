@@ -12,6 +12,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -33,6 +35,13 @@ public static void main(String args[]) throws IOException, InterruptedException{
     int contador_respuestas_vacias = 0;
     
     while(true){
+
+        Boolean txt = JOptionPane.showConfirmDialog(null, "Quieres buscar ingredientes?","Fumar",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+        if(!txt){
+            System.out.println("No fumo");
+            break;
+        }
+
         System.out.println("busca en mesa "+(contador_intentos+1));
         respuesta_mesa = buscarEnMesas(puerto_mesa[contador_intentos],le_falta);
         

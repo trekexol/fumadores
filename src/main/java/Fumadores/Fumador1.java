@@ -12,6 +12,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -33,6 +35,13 @@ public static void main(String args[]) throws IOException, InterruptedException{
     int contador_respuestas_vacias = 0;
     
     while(true){
+
+        Boolean txt = JOptionPane.showConfirmDialog(null, "Quieres buscar ingredientes?","Fumar",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+        if(!txt){
+            System.out.println("No fumo");
+            break;
+        }
+
         System.out.println("busca en mesa "+(contador_intentos+1));
         respuesta_mesa = buscarEnMesas(puerto_mesa[contador_intentos],le_falta);
         
@@ -83,7 +92,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
 public static String buscarEnMesas(int mesa,String le_falta)throws IOException, InterruptedException{
    
-    String address="127.0.0.1";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+    String address="localhost";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
     Socket s1=null;
     String mensaje= "Fumador1";
     BufferedReader br=null;
