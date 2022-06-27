@@ -1,0 +1,4 @@
+Mon Jun 27 19:48:56 VET 2022 ingrediente entregado mesa 1
+Mon Jun 27 19:48:56 VET 2022 ingrediente entregado mesa 2
+Mon Jun 27 19:49:38 VET 2022 ingrediente entregado mesa 3
+Mon Jun 27 19:49:38 VET 2022 ingrediente entregado mesa 1

@@ -50,7 +50,7 @@ public class Mesa2 {
            ejecutar_mesa.ejecutar(s);
           /*  ServerThread st=new ServerThread(s);
             st.start();*/
-        ejecutar_mesa.wait();
+       // ejecutar_mesa.wait();
         }
 
     catch(Exception e){
