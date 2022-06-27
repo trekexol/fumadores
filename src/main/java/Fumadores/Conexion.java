@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 public class Conexion {
     public static synchronized String buscarEnMesa1(int fumador,String le_falta)throws IOException, InterruptedException{
@@ -19,6 +20,7 @@ public class Conexion {
         try {
             s1=new Socket(address, 4446); // You can use static final constant PORT_NUM
             br= new BufferedReader(new InputStreamReader(System.in));
+            TimeUnit.SECONDS.sleep(2);
             is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
             os= new PrintWriter(s1.getOutputStream());
 
@@ -29,7 +31,7 @@ public class Conexion {
         }
         String response=null;
         try{
-
+            TimeUnit.SECONDS.sleep(2);
             os.println(mensaje+" "+le_falta);
             os.flush();
             response=is.readLine();
@@ -41,6 +43,7 @@ public class Conexion {
         System.out.println("Socket read Error");
         }
         finally{
+            TimeUnit.SECONDS.sleep(2);
             is.close();os.close();br.close();s1.close();
             return response;
         }

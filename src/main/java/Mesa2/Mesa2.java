@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class Mesa2 {
     
    
-    public static void main(String args[]){
+    public static void  main(String args[]){
 
     int puerto_mesa2 = 4447;
    
@@ -50,7 +50,7 @@ public class Mesa2 {
            ejecutar_mesa.ejecutar(s);
           /*  ServerThread st=new ServerThread(s);
             st.start();*/
-
+        ejecutar_mesa.wait();
         }
 
     catch(Exception e){
