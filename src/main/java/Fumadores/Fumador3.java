@@ -40,7 +40,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
     //buscar en mesa 1
         System.out.println("busca en mesa "+(contador_intentos+1));
 
-        respuesta_mesa = Conexion1.buscarEnMesa1(2,le_falta);
+        respuesta_mesa = Conexion1.buscarEnMesa1(3,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Tabaco")){
               if(le_falta.equals("Tabaco")){
@@ -82,7 +82,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
         //buscar en mesa 2
         System.out.println("busca en mesa "+(contador_intentos+1));
 
-        respuesta_mesa = Conexion2.buscarEnMesa2(2,le_falta);
+        respuesta_mesa = Conexion2.buscarEnMesa2(3,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Tabaco")){
               if(le_falta.equals("Tabaco")){
@@ -126,7 +126,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 //buscar en mesa 3
         System.out.println("busca en mesa "+(contador_intentos+1));
 
-        respuesta_mesa = Conexion3.buscarEnMesa3(2,le_falta);
+        respuesta_mesa = Conexion3.buscarEnMesa3(3,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Tabaco")){
               if(le_falta.equals("Tabaco")){
