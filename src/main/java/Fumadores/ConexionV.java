@@ -9,7 +9,7 @@ import java.net.Socket;
 public class ConexionV {
     public static void PedirAlVendedor(int fumador)throws IOException, InterruptedException{
 
-        String address="127.0.0.1";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+        String address="25.82.105.42";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
         Socket s1=null;
         String mensaje= "fumador"+fumador;
         BufferedReader br=null;

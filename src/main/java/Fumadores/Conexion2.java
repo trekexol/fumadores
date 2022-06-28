@@ -13,7 +13,7 @@ public class Conexion2 {
 
     public static synchronized String buscarEnMesa2(int fumador,String le_falta)throws IOException, InterruptedException{
       
-        String address="localhost";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+        String address="25.82.105.42";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
         Socket s2=null;
         String mensaje= "Fumador "+fumador;
         BufferedReader br=null;
