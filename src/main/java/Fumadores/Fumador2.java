@@ -68,7 +68,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
             contador_respuestas_vacias ++;
             if(contador_respuestas_vacias == 2){
                 ConexionV.PedirAlVendedor(2);
-                 System.out.println("Fumador2: Ya le pedi al vendedor");
+                 System.out.println("Fumador 2: Ya le pedi al vendedor");
                  contador_respuestas_vacias = 0;
             }
 
@@ -155,7 +155,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
             contador_respuestas_vacias ++;
             if(contador_respuestas_vacias == 2){
                 ConexionV.PedirAlVendedor(2);
-                 System.out.println("Fumador1: Ya le pedi al vendedor");
+                 System.out.println("Fumador 2: Ya le pedi al vendedor");
                  contador_respuestas_vacias = 0;
             }
 
