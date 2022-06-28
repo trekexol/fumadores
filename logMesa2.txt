@@ -6,3 +6,16 @@ Mon Jun 27 20:08:11 VET 2022 el fumador busca:  Tabaco-Fosforos y la mesa tiene
 Mon Jun 27 20:08:14 VET 2022 el fumador busca:  Papel-Fosforos y la mesa tiene 
 Mon Jun 27 20:08:35 VET 2022 el fumador busca:  Fosforos y la mesa tiene 
 Mon Jun 27 20:08:40 VET 2022 el vendedor envio ingrediente: Papel a mesa 2
+Mon Jun 27 22:35:03 VET 2022 el vendedor envio ingrediente: Tabaco a mesa 2
+Mon Jun 27 22:35:32 VET 2022 el fumador busca:  Papel-Fosforos y la mesa tiene Tabaco
+Mon Jun 27 22:35:54 VET 2022 el fumador busca:  Papel y la mesa tiene Tabaco
+Mon Jun 27 22:35:54 VET 2022 el vendedor envio ingrediente: Tabaco a mesa 2
+Mon Jun 27 22:36:42 VET 2022 el fumador busca:  Papel y la mesa tiene Tabaco
+Mon Jun 27 22:47:22 VET 2022 el fumador busca:  Papel-Fosforos y la mesa tiene Tabaco
+Mon Jun 27 22:47:22 VET 2022 el vendedor envio ingrediente: Fosforos a mesa 2
+Mon Jun 27 22:48:04 VET 2022 el fumador busca:  Papel-Fosforos y la mesa tiene Fosforos
+Mon Jun 27 22:52:08 VET 2022 el fumador busca:  Papel-Fosforos y la mesa tiene 
+Mon Jun 27 22:52:08 VET 2022 el vendedor envio ingrediente: Papel a mesa 2
+Mon Jun 27 22:52:10 VET 2022 el fumador busca:  Fosforos y la mesa tiene Papel
+Mon Jun 27 22:52:35 VET 2022 el fumador busca:  Papel y la mesa tiene Papel
+Mon Jun 27 22:52:38 VET 2022 el fumador busca:  Tabaco-Fosforos y la mesa tiene 
