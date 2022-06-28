@@ -11,7 +11,9 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
-import Fumadores.Conexion;
+import Fumadores.Conexion1;
+import Fumadores.Conexion2;
+import Fumadores.Conexion3;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,7 +39,10 @@ public static void main(String args[]) throws IOException, InterruptedException{
     //buscar en mesa 1
         System.out.println("busca en mesa "+(contador_intentos+1));
         //Conexion c = new Conexion();
-        respuesta_mesa = Conexion.buscarEnMesa1(1,le_falta);
+        if (!Thread.holdsLock(Conexion1.class)) {
+            System.out.println("Mesa 1 esta ocupada");
+        }
+        respuesta_mesa = Conexion1.buscarEnMesa1(1,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Papel")){
               if(le_falta.equals("Papel")){
@@ -78,7 +83,10 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
         //buscar en mesa 2
         System.out.println("busca en mesa "+(contador_intentos+1));
-        respuesta_mesa = Conexion.buscarEnMesa2(1,le_falta);
+        if (!Thread.holdsLock(Conexion2.class)) {
+            System.out.println("Mesa 2 esta ocupada");
+        }
+        respuesta_mesa = Conexion2.buscarEnMesa2(1,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Papel")){
               if(le_falta.equals("Papel")){
@@ -121,7 +129,10 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
         //buscar en mesa 3
         System.out.println("busca en mesa "+(contador_intentos+1));
-        respuesta_mesa = Conexion.buscarEnMesa3(1,le_falta);
+        if (!Thread.holdsLock(Conexion3.class)) {
+            System.out.println("Mesa 3 esta ocupada");
+        }
+        respuesta_mesa = Conexion3.buscarEnMesa3(1,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Papel")){
               if(le_falta.equals("Papel")){
