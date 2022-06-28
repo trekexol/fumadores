@@ -39,15 +39,13 @@ public static void main(String args[]) throws IOException, InterruptedException{
     //buscar en mesa 1
         System.out.println("busca en mesa "+(contador_intentos+1));
         //Conexion c = new Conexion();
-        if (!Thread.holdsLock(Conexion1.class)) {
-            System.out.println("Mesa 1 esta ocupada");
-        }
+        
         respuesta_mesa = Conexion1.buscarEnMesa1(1,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Papel")){
               if(le_falta.equals("Papel")){
                 System.out.println("Completo todos los Ingredientes, empieza a fumar");
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(50);
                 //ya fumo y se reinicia
                 le_falta = "Papel-Fosforos";
                 contador_respuestas_vacias = 0;
@@ -175,10 +173,6 @@ public static void main(String args[]) throws IOException, InterruptedException{
     }
 
 }
-
-
-
-
 
 
 

@@ -39,7 +39,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
         }
     //buscar en mesa 1
         System.out.println("busca en mesa "+(contador_intentos+1));
-        if (!Thread.holdsLock(Conexion1.class)) {
+        if (Thread.holdsLock(Conexion1.class)) {
             System.out.println("Mesa 1 esta ocupada");
         }
         respuesta_mesa = Conexion1.buscarEnMesa1(2,le_falta);
