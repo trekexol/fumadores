@@ -10,4 +10,5 @@
         <maven.compiler.target>14</maven.compiler.target>
         <exec.mainClass>com.mycompany.z_carlos_fumadores.Z_carlos_fumadores</exec.mainClass>
     </properties>
+    <name>Fumadores_Distribuidos</name>
 </project>

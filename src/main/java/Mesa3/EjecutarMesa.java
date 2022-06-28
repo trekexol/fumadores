@@ -59,12 +59,12 @@ public  void ejecutar(Socket s) {
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
-                log("vendedor envio ingrediente: "+ingrediente +"a mesa 3");
+                log("vendedor envio ingrediente: "+ingrediente +" a la mesa 3");
                 mensaje_respuesta = "";
             }
             if(mensaje_recibido.substring(0, 7).equals("Fumador")){
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
-                log("fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
+                log("fumador "+mensaje_recibido.charAt(8) +" busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
                  if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
                     ingrediente = "";

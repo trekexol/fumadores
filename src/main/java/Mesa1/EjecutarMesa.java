@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class EjecutarMesa {
     
@@ -38,7 +40,8 @@ public  void ejecutar(Socket s) {
     PrintWriter os=null;
     //Socket s=null;
     
-    
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+      
     //String ingrediente = "";  
     
    
@@ -58,12 +61,12 @@ public  void ejecutar(Socket s) {
             if(mensaje_recibido.substring(0, 8).equals("Vendedor")){
                 ingrediente = mensaje_recibido.substring(9);
                 System.out.println("Ingrediente Recibido: "+ingrediente);
-                log("vendedor envio ingrediente: "+ingrediente+" a mesa 1");
+                log("vendedor envio ingrediente: "+ingrediente+" a mesa 1 ");
                 mensaje_respuesta = "";
             }
             if(mensaje_recibido.substring(0, 7).equals("Fumador")){
                 System.out.println("El fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
-                log("fumador busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
+                log("fumador "+mensaje_recibido.charAt(8) +" busca: "+mensaje_recibido.substring(9)+" y la mesa tiene "+ingrediente);
                  if(mensaje_recibido.substring(9).contains(ingrediente)){
                     mensaje_respuesta = ingrediente;
                     ingrediente = "";
