@@ -29,7 +29,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
     String respuesta_mesa = "";
     int contador_respuestas_vacias = 0;
     while(true){
-        Boolean txt = JOptionPane.showConfirmDialog(null, "Quieres buscar ingredientes?","Fumar",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
+        Boolean txt = JOptionPane.showConfirmDialog(null, "Quieres buscar ingredientes?","Fumador 1",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
         if(!txt){
             System.out.println("No fumo");
             break;
@@ -173,7 +173,8 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
 public static void PedirAlVendedor(int vendedor)throws IOException, InterruptedException{
    
-    String address="127.0.0.1";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+    //String address="127.0.0.1"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
+    String address="25.82.105.42";
     Socket s1=null;
     String mensaje= "Fumador1";
     BufferedReader br=null;

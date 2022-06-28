@@ -43,7 +43,8 @@ public class PonerEnMesa {
     }    
     public static void enviarIngrediente(int puerto) throws IOException, InterruptedException{
             
-         InetAddress address=InetAddress.getLocalHost();
+    //InetAddress address=InetAddress.getLocalHost();
+    String address = "25.82.105.42";
     Socket s1=null;
     BufferedReader br=null;
     BufferedReader is=null;
