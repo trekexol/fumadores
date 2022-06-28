@@ -6,11 +6,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Conexion1 {
-    public static synchronized String buscarEnMesa1(int fumador,String le_falta)throws IOException, InterruptedException{
+
+    
+    public static synchronized String buscarEnMesa1(int fumador,String le_falta)throws IOException, InterruptedException {
         
         String address="localhost";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
         Socket s1=null;

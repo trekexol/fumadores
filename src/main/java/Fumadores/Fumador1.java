@@ -127,9 +127,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
         //buscar en mesa 3
         System.out.println("busca en mesa "+(contador_intentos+1));
-        if (!Thread.holdsLock(Conexion3.class)) {
-            System.out.println("Mesa 3 esta ocupada");
-        }
+        
         respuesta_mesa = Conexion3.buscarEnMesa3(1,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Papel")){

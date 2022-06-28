@@ -39,9 +39,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
         }
     //buscar en mesa 1
         System.out.println("busca en mesa "+(contador_intentos+1));
-        if (!Thread.holdsLock(Conexion1.class)) {
-            System.out.println("Mesa 1 esta ocupada");
-        }
+
         respuesta_mesa = Conexion1.buscarEnMesa1(2,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Tabaco")){
@@ -83,9 +81,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
         //buscar en mesa 2
         System.out.println("busca en mesa "+(contador_intentos+1));
-        if (!Thread.holdsLock(Conexion2.class)) {
-            System.out.println("Mesa 2 esta ocupada");
-        }
+
         respuesta_mesa = Conexion2.buscarEnMesa2(2,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Tabaco")){
@@ -129,9 +125,7 @@ public static void main(String args[]) throws IOException, InterruptedException{
 
 //buscar en mesa 3
         System.out.println("busca en mesa "+(contador_intentos+1));
-        if (!Thread.holdsLock(Conexion3.class)) {
-            System.out.println("Mesa 3 esta ocupada");
-        }
+
         respuesta_mesa = Conexion3.buscarEnMesa3(2,le_falta);
         System.out.println("respuesta de la mesa :"+respuesta_mesa);
         if(respuesta_mesa.equals("Tabaco")){

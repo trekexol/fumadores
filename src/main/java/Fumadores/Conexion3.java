@@ -10,7 +10,9 @@ import java.util.concurrent.TimeUnit;
 public class Conexion3 {
 
     public static synchronized String buscarEnMesa3(int fumador,String le_falta)throws IOException, InterruptedException{
-
+        if (!Thread.holdsLock(Conexion3.class)) {
+            System.out.println("Mesa 3 esta ocupada, esperando...");
+        }
         String address="localhost";//"192.168.1.68"; //ip del server donde corren las mesas se cambia por la ip publica de la pc donde corre el server
         Socket s3=null;
         String mensaje= "Fumador "+fumador;
