@@ -14,6 +14,10 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+import Fumadores.Conexion1;
+import Fumadores.Conexion2;
+import Fumadores.Conexion3;
+
 
 /**
  *
@@ -22,9 +26,8 @@ import java.util.concurrent.TimeUnit;
 public class PonerEnMesa {
     
     int[] puerto_mesa = {4446,4447,4448};
-    
-     
-    public synchronized void enviar() throws IOException, InterruptedException{
+
+    public void enviar() throws IOException, InterruptedException{
         int numero_aleatorio = -1;
         int numero_anterior = -1;
          Random azar = new Random();
@@ -34,60 +37,27 @@ public class PonerEnMesa {
                 numero_aleatorio = azar.nextInt(3);
             }
             numero_anterior =  numero_aleatorio;
-            enviarIngrediente(puerto_mesa[numero_aleatorio]);
+            switch(numero_aleatorio){
+                case 0:
+                Conexion1.enviarIngrediente();
+                break;
+                case 1:
+                Conexion2.enviarIngrediente();
+                break;
+                case 2:
+                Conexion3.enviarIngrediente();
+                break;
+
+            }
+            //enviarIngrediente(puerto_mesa[numero_aleatorio]);
             System.out.println("Ingrediente Entregado mesa "+(numero_aleatorio+1));
             log("ingrediente entregado mesa "+(numero_aleatorio+1));
         }
         
         
     }    
-    public static void enviarIngrediente(int puerto) throws IOException, InterruptedException{
-            
-         InetAddress address=InetAddress.getLocalHost();
-    Socket s1=null;
-    BufferedReader br=null;
-    BufferedReader is=null;
-    PrintWriter os=null;
-      String line = "";
-    String[] ingredientes = new String[]{"Tabaco","Papel","Fosforos"};  
     
-    Random azar = new Random();
-
-    try {
-        s1=new Socket(address, puerto); // You can use static final constant PORT_NUM
-        br= new BufferedReader(new InputStreamReader(System.in));
-        is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
-        os= new PrintWriter(s1.getOutputStream());
-    }
-    catch (IOException e){
-        e.printStackTrace();
-        System.err.print("IO Exception");
-    }
-
-  
-    String response=null;
-    try{
-       
-        os.println("Vendedor "+ingredientes[azar.nextInt(3)]);
-        os.flush();
-        response=is.readLine();
-        
-        //System.out.println("Server Response : "+response);
-        //line=br.readLine();
-        is.close();os.close();br.close();s1.close();
-      
-    }
-    catch(IOException e){
-        e.printStackTrace();
     
-    }
-    finally{
-
-        is.close();os.close();br.close();s1.close();
-                
-
-    }
-    }
 
     public void  log(String mensaje){
         try {

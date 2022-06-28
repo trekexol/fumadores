@@ -1,2 +1,6 @@
 Mon Jun 27 22:49:33 VET 2022 fumador 1 busca:  Papel-Fosforos y la mesa tiene 
 Mon Jun 27 22:49:45 VET 2022 vendedor envio ingrediente: Papel a mesa 1 27/06/2022 22:49:45
+Tue Jun 28 00:25:14 VET 2022 fumador 1 busca:  Papel-Fosforos y la mesa tiene 
+Tue Jun 28 00:25:16 VET 2022 fumador 2 busca:  Tabaco-Fosforos y la mesa tiene 
+Tue Jun 28 00:25:23 VET 2022 vendedor envio ingrediente: Tabaco a mesa 1 
+Tue Jun 28 00:25:38 VET 2022 fumador 2 busca:  Tabaco-Fosforos y la mesa tiene Tabaco
